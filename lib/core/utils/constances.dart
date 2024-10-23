@@ -4,5 +4,7 @@ class AppConstances {
   static const nowPlatingMoviePath = '$baseUrl/movie/now_playing?api_key=$apiKey';
   static const popularMoviePath = '$baseUrl/movie/popular?api_key=$apiKey';
   static const topRatedMoviePath = '$baseUrl/movie/top_rated?api_key=$apiKey';
+  static  movieDetailsPath (int movieId)=>'$baseUrl/movie/$movieId?api_key=$apiKey';
+  static recommendPath(int movieId ) =>'$baseUrl/movie/$movieId/recommendations?api_key=$apiKey';
 
 }

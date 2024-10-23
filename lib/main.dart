@@ -16,11 +16,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Movie',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+       theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.grey.shade900),
+       //ThemeData(
+      //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      //   useMaterial3: true,
+      //),
       home: const MoviesScreen(),
     );
   }

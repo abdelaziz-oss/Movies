@@ -5,8 +5,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/utils/enum.dart';
-import 'package:movies_app/movies/presentation/controller/movie_bloc.dart';
-import 'package:movies_app/movies/presentation/controller/movie_state.dart';
+import 'package:movies_app/movies/presentation/controller/movie_bloc/movie_bloc.dart';
+import 'package:movies_app/movies/presentation/controller/movie_bloc/movie_state.dart';
+import 'package:movies_app/movies/presentation/screens/movie_detail_screen.dart';
 
 class NowPlayingComponent extends StatelessWidget {
   const NowPlayingComponent({super.key});
@@ -14,16 +15,18 @@ class NowPlayingComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MovieBloc, MovieState>(
-      buildWhen: (previous , current)=> previous.nowPlayingRequest != current.nowPlayingRequest,
+      buildWhen: (previous, current) =>
+          previous.nowPlayingRequest != current.nowPlayingRequest,
       builder: (context, state) {
         return switch (state.nowPlayingRequest) {
-          RequestState.loading =>const SizedBox(height: 400.0,
-            child:  Center(
+          RequestState.loading => const SizedBox(
+              height: 400.0,
+              child: Center(
                 child: CircularProgressIndicator(
                   color: Colors.white,
                 ),
               ),
-          ),
+            ),
           RequestState.loaded => FadeIn(
               duration: const Duration(milliseconds: 500),
               child: CarouselSlider(
@@ -37,7 +40,11 @@ class NowPlayingComponent extends StatelessWidget {
                     return GestureDetector(
                       key: const Key('openMovieMinimalDetail'),
                       onTap: () {
-                        /// TODO : NAVIGATE TO MOVIE DETAILS
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    MovieDetailScreen(id: item.id)));
                       },
                       child: Stack(
                         children: [
