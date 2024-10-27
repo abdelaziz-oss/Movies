@@ -10,7 +10,6 @@ import 'package:movies_app/movies/domain/entities/genres.dart';
 import 'package:movies_app/movies/presentation/controller/movie_details_bloc/movie_details_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movie_details_bloc/movie_details_event.dart';
 import 'package:movies_app/movies/presentation/controller/movie_details_bloc/movie_details_state.dart';
-import 'package:movies_app/movies/presentation/screens/dummy.dart';
 import 'package:shimmer/shimmer.dart';
 
 
