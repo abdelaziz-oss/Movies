@@ -26,7 +26,7 @@ class PopularScreen extends StatelessWidget {
         itemCount: popularMovies.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: EdgeInsets.all(8),
+            padding:const EdgeInsets.all(8),
             child: Card(
               color: const Color.fromARGB(255, 28, 28, 28),
               child: Row(

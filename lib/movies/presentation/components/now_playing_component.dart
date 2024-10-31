@@ -3,7 +3,9 @@ import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/network/api_constance.dart';
+import 'package:movies_app/core/utils/app_string.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/movies/presentation/controller/movie_bloc/movie_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movie_bloc/movie_state.dart';
@@ -19,9 +21,9 @@ class NowPlayingComponent extends StatelessWidget {
           previous.nowPlayingRequest != current.nowPlayingRequest,
       builder: (context, state) {
         return switch (state.nowPlayingRequest) {
-          RequestState.loading => const SizedBox(
-              height: 400.0,
-              child: Center(
+          RequestState.loading => SizedBox(
+              height: 400.0.h,
+              child: const Center(
                 child: CircularProgressIndicator(
                   color: Colors.white,
                 ),
@@ -31,7 +33,7 @@ class NowPlayingComponent extends StatelessWidget {
               duration: const Duration(milliseconds: 500),
               child: CarouselSlider(
                 options: CarouselOptions(
-                  height: 400.0,
+                  height: 400.0.h,
                   viewportFraction: 1.0,
                   onPageChanged: (index, reason) {},
                 ),
@@ -67,7 +69,7 @@ class NowPlayingComponent extends StatelessWidget {
                             },
                             blendMode: BlendMode.dstIn,
                             child: CachedNetworkImage(
-                              height: 560.0,
+                              height: 560.0.h,
                               imageUrl:
                                   ApiConstance.imageUrl(item.backdropPath),
                               fit: BoxFit.cover,
@@ -79,20 +81,20 @@ class NowPlayingComponent extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(bottom: 16.0),
+                                  padding: EdgeInsets.only(bottom: 16.0.h),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      const Icon(
+                                      Icon(
                                         Icons.circle,
                                         color: Colors.redAccent,
-                                        size: 16.0,
+                                        size: 16.0.r,
                                       ),
-                                      const SizedBox(width: 4.0),
+                                      SizedBox(width: 4.0.w),
                                       Text(
-                                        'Now Playing'.toUpperCase(),
-                                        style: const TextStyle(
-                                          fontSize: 16.0,
+                                        AppString.nowPlaying,
+                                        style: TextStyle(
+                                          fontSize: 16.0.sp,
                                           color: Colors.white,
                                         ),
                                       ),
@@ -100,12 +102,12 @@ class NowPlayingComponent extends StatelessWidget {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(bottom: 16.0),
+                                  padding: EdgeInsets.only(bottom: 16.0.h),
                                   child: Text(
                                     item.title,
                                     textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                      fontSize: 24,
+                                    style: TextStyle(
+                                      fontSize: 24.sp,
                                       color: Colors.white,
                                     ),
                                   ),
